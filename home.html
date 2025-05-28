@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block recent_content %}
+{% if post %}
+    <h1>{{ post.title }}</h1>
+    <p class="post.date">{{ post.date }}</p>
+    <p>{{ post.content }}</p>
+
+    {% else %}
+    <p> No Posts Available Yet</p>
+{% endif %}
+
+
+{% endblock %}

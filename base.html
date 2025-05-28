@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<HTML>
+	<head>
+		    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+		<div class="Title">
+			<h1>My Blog</h1>
+		</div>
+		<ul class="navigation">
+			<li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+			<li><a href="{{ url_for('about') }}">About</a></li>
+			<li><a href="{{ url_for('create') }}">Create Post</a></li>
+			<li class="right"><a href="#Archive">Sign In</a></li>
+		</ul>
+		<div class="recent">
+			{% block recent_content %}
+			<h1>Title</h1>
+			<p> Here is some text</p>
+			{% endblock %}
+		</div>
+		{# There needs to be a loop that finds the amount of blog posts.
+		The issue with doing this is that if there were a lot of blog posts, 
+		there would also be a LOOT of scrolling to do. Ah, it will work anyway.
+		The way I can see this working is with the inclusion of an ID number
+		on all of the JSON posts, then a loop to find the largest number in the 
+		file, and literally creating that many divs. Potentially a bit brute force
+		but I'm not clever enough to think of anything else. #}
+
+		
+
+
+		{#This aint it. This isn't working. THe only thign showing is "No posts Yet. Why?#}
+
+			<div class="old" >
+					{% if posts %}
+					{% for post in posts|reverse %}
+						<div class="short">
+						<h2>{{ post.title }}</h2>
+						<p class="post-date">{{ post.date }}</p>
+						<p>{{ post.title }}</p>
+						<p>{{ post.content }}</p>
+						</div>
+					{% endfor %}
+
+					{% else %}
+					<h2>No Posts Yet</h2>
+					{% endif %}
+					
+			</div>
+
+		
+
+
+	</body>
+
+</HTML>
